@@ -18,23 +18,26 @@
 	</properties>
 
 	<dependencies>
+	
+	<!-- Dependencia Testes JUnit -->	
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
-
+<!-- Dependencia Conexao Banco MySql -->	
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.28</version>
 		</dependency>
 
+	<!-- Dependencia Hibernate -->	
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
-			<version>5.5.6.Final</version>
+			<version>5.2.6.Final</version>
 		</dependency>
 
 		<dependency>
@@ -43,22 +46,13 @@
 			<version>5.2.6.Final</version>
 		</dependency>
 
+
+		<!-- Dependencia PrimeFaces -->	
 		<dependency>
-			<groupId>com.sun.faces</groupId>
-			<artifactId>jsf-api</artifactId>
-			<version>2.2.14</version>
-
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+			<version>11.0.0</version>
 		</dependency>
-
-
-		<dependency>
-			<groupId>com.sun.faces</groupId>
-			<artifactId>jsf-impl</artifactId>
-			<version>2.2.14</version>
-		</dependency>
-
-		
-
 
 	</dependencies>
 
@@ -72,10 +66,7 @@
 					<version>3.1.0</version>
 				</plugin>
 				<!-- default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
-				<plugin>
-					<artifactId>maven-resources-plugin</artifactId>
-					<version>3.0.2</version>
-				</plugin>
+
 				<plugin>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>3.8.0</version>

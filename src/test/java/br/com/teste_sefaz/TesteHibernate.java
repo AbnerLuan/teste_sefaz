@@ -1,4 +1,4 @@
-package br.com.teste_sefaz.util;
+package br.com.teste_sefaz;
 
 import java.util.List;
 
@@ -22,16 +22,16 @@ public class TesteHibernate {
 		dao.salvar(usuario);
 	}
 
-//	@Test
-//	public void testeBuscar() {
-//		Dao<Usuario> dao = new Dao<Usuario>();
-//		Usuario usuario = new Usuario();
-//		usuario.setId(2L);
-//		usuario = dao.pesquisar(usuario);
-//		
-//		System.out.println(usuario);
-//
-//	}
+	@Test
+	public void testeBuscar() {
+		Dao<Usuario> dao = new Dao<Usuario>();
+		Usuario usuario = new Usuario();
+		usuario.setId(2L);
+		usuario = dao.pesquisar1(usuario);
+		
+		System.out.println(usuario);
+
+	}
 	
 	@Test
 	public void testeBuscar2() {

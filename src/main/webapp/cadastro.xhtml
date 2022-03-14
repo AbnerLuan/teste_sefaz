@@ -5,34 +5,60 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-	
-<h:head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-<title>Cadastro</title>
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<title>Cadastro</title>
 </h:head>
 
 
 
 <h:body>
-	<h1>Tela de Cadastro</h1>
-	
-	<h:form id="formUsuario">
-	
-		<h:outputLabel value="Nome: "/>
-		<h:inputText value="#{usuarioBean.usuario.nome}"/>
-		<br/>
-		<h:outputLabel value="E-mail: "/>
-		<h:inputText value="#{usuarioBean.usuario.email}"/>
-		<br/>
-		<h:outputLabel value="Senha: "/>
-		<h:inputText value="#{usuarioBean.usuario.senha}"/>
-		<br/>
-		<h:commandButton value="Salvar" action="#{usuarioBean.salvar}" immediate="true"/>
-	
-	
-	
+	<h1>Tela de Cadastro2</h1>
+	<h:form id="frm">
+		<p:messages autoUpdate="true" />
+		<p:panelGrid columns="2">
+
+			<p:outputLabel value="Nome" />
+			<p:inputText size="30" value="#{usuarioBean.usuario.nome}"
+				required="true" label="Nome" />
+
+			<p:outputLabel value="E-mail" />
+			<p:inputText size="30" value="" required="true" label="Email" />
+
+			<p:outputLabel value="Senha" />
+			<p:inputText size="30" value="" required="true" label="Senha" />
+
+			<p:outputLabel />
+			<p:commandButton value="ADICIONAR" action="usuarioBean.salvar" />
+
+
+		</p:panelGrid>
+
 	</h:form>
-		
+
+
+	<h1>Lista de Usuarios</h1>
+
+	<p:dataTable value="" var="u" border="1" id="tabelaUsuario">
+		<p:column headerText="Nome"></p:column>
+		<p:column headerText="Senha"></p:column>
+		<p:column headerText="E-mail"></p:column>
+
+		<p:column headerText="Tel's" width="80">
+			<p:button value="TEL" />
+		</p:column>
+
+		<p:column headerText="Editar" width="80">
+			<p:button value="EDITAR" />
+		</p:column>
+
+		<p:column headerText="Excluir" width="80">
+			<p:button value="EXCLUIR" />
+		</p:column>
+
+	</p:dataTable>
+
 </h:body>
 </html>

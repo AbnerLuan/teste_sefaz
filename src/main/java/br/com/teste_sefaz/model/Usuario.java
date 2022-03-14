@@ -1,6 +1,5 @@
 package br.com.teste_sefaz.model;
 
-import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.Entity;
@@ -9,9 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Usuario implements Serializable {
+public class Usuario {
 
-	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,9 +18,9 @@ public class Usuario implements Serializable {
 	private String email;
 	private String senha;
 
-	public Usuario() {
-
-	}
+//	public Usuario() {
+//
+//	}
 
 	public Long getId() {
 		return id;

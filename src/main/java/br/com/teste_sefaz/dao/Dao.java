@@ -28,13 +28,13 @@ public class Dao<E> {
 		return entidadeSalva;
 	}
 
-//	public E pesquisar(E entidade) {
-//		Object id = HibernateUtil.getPrimaryKey(entidade);
-//		
-//		E e = (E) entityManager.find(entidade.getClass(), id);
-//		
-//		return e;
-//	}
+	public E pesquisar1(E entidade) {
+		Object id = HibernateUtil.getPrimaryKey(entidade);
+		
+		E e = (E) entityManager.find(entidade.getClass(), id);
+		
+		return e;
+	}
 
 	public E pesquisar(Long id, Class<E> entidade) {
 
