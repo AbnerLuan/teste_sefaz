@@ -1,10 +1,11 @@
-package br.com.teste_sefaz.util;
+package br.com.sefaz.service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-public class HibernateUtil {
+
+public class UsuarioService {
 	
 	public static EntityManagerFactory factory = null;
 	
@@ -16,7 +17,7 @@ public class HibernateUtil {
 		
 		try {
 			if (factory == null) {
-				factory = Persistence.createEntityManagerFactory("teste_sefaz");
+				factory = Persistence.createEntityManagerFactory("crud6");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -32,5 +33,5 @@ public class HibernateUtil {
 		return factory.getPersistenceUnitUtil().getIdentifier(entity);
 		
 	}
-		
+
 }

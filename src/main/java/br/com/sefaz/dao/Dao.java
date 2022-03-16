@@ -1,15 +1,15 @@
-package br.com.teste_sefaz.dao;
+package br.com.sefaz.dao;
 
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
-import br.com.teste_sefaz.util.HibernateUtil;
+import br.com.sefaz.service.UsuarioService;
 
 public class Dao<E> {
-
-	private EntityManager entityManager = HibernateUtil.getEntityManager();
+	
+	private EntityManager entityManager = UsuarioService.getEntityManager();
 
 	public void salvar(E entidade) {
 		EntityTransaction transaction = entityManager.getTransaction();
@@ -29,7 +29,7 @@ public class Dao<E> {
 	}
 
 	public E pesquisar1(E entidade) {
-		Object id = HibernateUtil.getPrimaryKey(entidade);
+		Object id = UsuarioService.getPrimaryKey(entidade);
 		
 		E e = (E) entityManager.find(entidade.getClass(), id);
 		
@@ -44,7 +44,7 @@ public class Dao<E> {
 	}
 
 	public void deletarPorId(E entidade) {
-		Object id = HibernateUtil.getPrimaryKey(entidade);
+		Object id = UsuarioService.getPrimaryKey(entidade);
 
 		EntityTransaction transaction = entityManager.getTransaction();
 		transaction.begin();
@@ -63,5 +63,5 @@ public class Dao<E> {
 		
 		return lista;
 	}
-			
+
 }

@@ -1,64 +1,87 @@
-<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
-
 <h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
-	<title>Cadastro</title>
+	<title>Cadastro de Usuario</title>
 </h:head>
-
-
-
 <h:body>
-	<h1>Tela de Cadastro2</h1>
-	<h:form id="frm">
-		<p:messages autoUpdate="true" />
+
+	<h:form>
+		<h:messages />
+		<h1>Tela de Cadastro</h1>
+
 		<p:panelGrid columns="2">
 
-			<p:outputLabel value="Nome" />
-			<p:inputText size="30" value="#{usuarioBean.usuario.nome}"
-				required="true" label="Nome" />
+			<p:outputLabel value="ID: " />
+			<p:inputText readonly="true" value="#{usuarioBean.usuario.id}" />
 
-			<p:outputLabel value="E-mail" />
-			<p:inputText size="30" value="" required="true" label="Email" />
+			<p:outputLabel value="Nome: " />
+			<p:inputText id="nome" value="#{usuarioBean.usuario.nome}"/>
 
-			<p:outputLabel value="Senha" />
-			<p:inputText size="30" value="" required="true" label="Senha" />
+			<p:outputLabel value="E-mail: " />
+			<p:inputText id="email" value="#{usuarioBean.usuario.email}" />
 
-			<p:outputLabel />
-			<p:commandButton value="ADICIONAR" action="usuarioBean.salvar" />
-
+			<p:outputLabel value="Senha: " />
+			<p:password id="senha" value="#{usuarioBean.usuario.senha}" />
 
 		</p:panelGrid>
+
+		<br/>
+
+		<h:commandButton value="SALVAR" action="#{usuarioBean.salvar}" />
+
+		<br/>
+		<br/>
+		
+
+		<p:dataTable value="#{usuarioBean.list}" var="u" cellpadding="15"
+			border="1">
+			<f:facet name="header">Lista de usuarios</f:facet>
+
+			<p:column>
+				<f:facet name="header">Id</f:facet>
+				<p:outputLabel value="#{u.id}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">Nome</f:facet>
+				<p:outputLabel value="#{u.nome}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">E-mail</f:facet>
+				<p:outputLabel value="#{u.email}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">Senha</f:facet>
+				<p:outputLabel value="#{u.senha}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">Editar</f:facet>
+				<h:commandLink value="Editar">
+					<f:setPropertyActionListener value="#{u}"
+						target="#{usuarioBean.usuario}"></f:setPropertyActionListener>
+				</h:commandLink>
+			</p:column>
+			
+			<p:column >
+				<f:facet name="header">Deletar</f:facet>
+				<h:commandLink value="Deletar" action="#{usuarioBean.remover}">
+					<f:setPropertyActionListener value="#{u}"
+						target="#{usuarioBean.usuario}"></f:setPropertyActionListener>
+				</h:commandLink>
+			</p:column>
+
+		</p:dataTable>
+
 
 	</h:form>
 
 
-	<h1>Lista de Usuarios</h1>
-
-	<p:dataTable value="" var="u" border="1" id="tabelaUsuario">
-		<p:column headerText="Nome"></p:column>
-		<p:column headerText="Senha"></p:column>
-		<p:column headerText="E-mail"></p:column>
-
-		<p:column headerText="Tel's" width="80">
-			<p:button value="TEL" />
-		</p:column>
-
-		<p:column headerText="Editar" width="80">
-			<p:button value="EDITAR" />
-		</p:column>
-
-		<p:column headerText="Excluir" width="80">
-			<p:button value="EXCLUIR" />
-		</p:column>
-
-	</p:dataTable>
-
 </h:body>
 </html>
+

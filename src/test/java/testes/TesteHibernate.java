@@ -1,11 +1,11 @@
-package br.com.teste_sefaz;
+package testes;
 
 import java.util.List;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-import br.com.teste_sefaz.dao.Dao;
-import br.com.teste_sefaz.model.Usuario;
+import br.com.sefaz.dao.Dao;
+import br.com.sefaz.model.Usuario;
 
 public class TesteHibernate {
 
@@ -15,9 +15,9 @@ public class TesteHibernate {
 
 		Usuario usuario = new Usuario();
 
-		usuario.setNome("Jecircleide");
-		usuario.setEmail("jecircleide@email.com");
-		usuario.setSenha("jecircleide123");
+		usuario.setNome("maria");
+		usuario.setEmail("maria@email.com");
+		usuario.setSenha("maria");
 
 		dao.salvar(usuario);
 	}

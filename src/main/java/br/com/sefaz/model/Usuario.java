@@ -1,26 +1,28 @@
-package br.com.teste_sefaz.model;
+package br.com.sefaz.model;
 
-import java.util.Objects;
+import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 
 @Entity
-public class Usuario {
+public class Usuario implements Serializable {
 
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String nome;
-	private String email;
-	private String senha;
 
-//	public Usuario() {
-//
-//	}
+	private String nome;
+
+	private String email;
+
+	private String senha;
 
 	public Long getId() {
 		return id;
@@ -54,26 +56,8 @@ public class Usuario {
 		this.senha = senha;
 	}
 
-	@Override
-	public String toString() {
-		return "Usuario [id=" + id + ", nome=" + nome + ", email=" + email + ", senha=" + senha + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(id);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Usuario other = (Usuario) obj;
-		return Objects.equals(id, other.id);
-	}
+//	public Usuario() {
+//		super();
+//	}
 
 }
