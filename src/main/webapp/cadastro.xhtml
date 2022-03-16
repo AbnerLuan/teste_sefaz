@@ -10,15 +10,16 @@
 
 	<h:form>
 		<h:messages />
-		<h1>Tela de Cadastro</h1>
+		
 
 		<p:panelGrid columns="2">
+				<f:facet name="header">Painel de Cadastro</f:facet>
 
 			<p:outputLabel value="ID: " />
 			<p:inputText readonly="true" value="#{usuarioBean.usuario.id}" />
 
 			<p:outputLabel value="Nome: " />
-			<p:inputText id="nome" value="#{usuarioBean.usuario.nome}"/>
+			<p:inputText id="nome" value="#{usuarioBean.usuario.nome}"  />
 
 			<p:outputLabel value="E-mail: " />
 			<p:inputText id="email" value="#{usuarioBean.usuario.email}" />
@@ -26,18 +27,15 @@
 			<p:outputLabel value="Senha: " />
 			<p:password id="senha" value="#{usuarioBean.usuario.senha}" />
 
+			
+			<p:outputLabel value="" />
+			<h:commandButton value="SALVAR" action="#{usuarioBean.salvar}" />
+
 		</p:panelGrid>
-
-		<br/>
-
-		<h:commandButton value="SALVAR" action="#{usuarioBean.salvar}" />
-
-		<br/>
-		<br/>
-		
+		<br />
 
 		<p:dataTable value="#{usuarioBean.list}" var="u" cellpadding="15"
-			border="1">
+			border="1" paginator="true" rows="5">
 			<f:facet name="header">Lista de usuarios</f:facet>
 
 			<p:column>
@@ -67,8 +65,8 @@
 						target="#{usuarioBean.usuario}"></f:setPropertyActionListener>
 				</h:commandLink>
 			</p:column>
-			
-			<p:column >
+
+			<p:column>
 				<f:facet name="header">Deletar</f:facet>
 				<h:commandLink value="Deletar" action="#{usuarioBean.remover}">
 					<f:setPropertyActionListener value="#{u}"

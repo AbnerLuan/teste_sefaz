@@ -4,7 +4,9 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.NoResultException;
 
+import br.com.sefaz.model.Usuario;
 import br.com.sefaz.service.UsuarioService;
 
 public class Dao<E> {
@@ -64,4 +66,20 @@ public class Dao<E> {
 		return lista;
 	}
 
+	
+	// Dao para login
+	
+	public Usuario getUsuario(String nome, String senha) {
+		try {
+			Usuario usuario = (Usuario) entityManager
+					.createQuery("SELECT u from Usuario u where u.nome = :nome and u.senha = :senha")
+					.setParameter("nome", nome).setParameter("senha", senha).getSingleResult();
+			return usuario;
+			
+		} catch (NoResultException e) {
+			return null;
+		}
+		
+	
+	}
 }

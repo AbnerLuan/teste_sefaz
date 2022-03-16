@@ -1,2 +1,6 @@
 # teste_sefaz
- teste sefaz-2022
+Teste Sefaz - 2022
+
+Sistema de Crud com tela de login para autenticação.
+
+Desenvolvido em Java.
