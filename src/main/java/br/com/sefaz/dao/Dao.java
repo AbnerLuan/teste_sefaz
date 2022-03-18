@@ -10,7 +10,7 @@ import br.com.sefaz.model.Usuario;
 import br.com.sefaz.service.UsuarioService;
 
 public class Dao<E> {
-	
+
 	private EntityManager entityManager = UsuarioService.getEntityManager();
 
 	public void salvar(E entidade) {
@@ -32,9 +32,9 @@ public class Dao<E> {
 
 	public E pesquisar1(E entidade) {
 		Object id = UsuarioService.getPrimaryKey(entidade);
-		
+
 		E e = (E) entityManager.find(entidade.getClass(), id);
-		
+
 		return e;
 	}
 
@@ -51,35 +51,20 @@ public class Dao<E> {
 		EntityTransaction transaction = entityManager.getTransaction();
 		transaction.begin();
 
-		entityManager.createNativeQuery(
-				"delete from " + entidade.getClass().getSimpleName()
-				.toLowerCase() + " where id = " + id).executeUpdate();
+		entityManager
+				.createNativeQuery(
+						"delete from " + entidade.getClass().getSimpleName().toLowerCase() + " where id = " + id)
+				.executeUpdate();
 		transaction.commit();
 	}
-	
-	public List<E> listar (Class<E> entidade) {
+
+	public List<E> listar(Class<E> entidade) {
 		EntityTransaction transaction = entityManager.getTransaction();
 		transaction.begin();
-		List<E> lista = entityManager.createQuery("from "+ entidade.getName()).getResultList();
+		List<E> lista = entityManager.createQuery("from " + entidade.getName()).getResultList();
 		transaction.commit();
-		
+
 		return lista;
 	}
 
-	
-	// Dao para login
-	
-	public Usuario getUsuario(String nome, String senha) {
-		try {
-			Usuario usuario = (Usuario) entityManager
-					.createQuery("SELECT u from Usuario u where u.nome = :nome and u.senha = :senha")
-					.setParameter("nome", nome).setParameter("senha", senha).getSingleResult();
-			return usuario;
-			
-		} catch (NoResultException e) {
-			return null;
-		}
-		
-	
-	}
 }

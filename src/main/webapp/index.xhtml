@@ -13,14 +13,13 @@
     <f:facet name="header">Tela de Login</f:facet>
       <p:outputLabel for="nome" value="Nome
       Usuário:" />
-      <p:inputText id="nome"
-      value="#{loginBean.usuario.nome}" />
+      <p:inputText id="nome" value="#{usuarioBean.usuario.nome}" />
 
       <p:outputLabel for="senha" value="Senha:" />
-      <p:password id="senha" value="#{loginBean.usuario.senha}" />
+      <p:password id="senha" value="#{usuarioBean.usuario.senha}" />
 
  	<p:outputLabel value="" />
-		<p:commandButton value="Logar" icon="ui-icon-star" action="#{loginBean.envia}" />
+		<p:commandButton value="Logar" action="#{usuarioBean.logar}" />
     
     </p:panelGrid>
   </h:form>
