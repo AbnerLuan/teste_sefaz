@@ -51,7 +51,11 @@
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
 			<version>11.0.0</version>
+			<scope>compile</scope>
 		</dependency>
+
+
 	</dependencies>
-		
+
+
 </project>
