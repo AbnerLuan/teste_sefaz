@@ -21,6 +21,8 @@ public class UsuarioBean implements Serializable {
 	private Usuario usuario = new Usuario();
 	private Dao<Usuario> dao = new Dao<Usuario>();
 	private List<Usuario> list = new ArrayList<Usuario>();
+	
+	private IDaoUsuario iDaoUsuario = new IDaoUsuarioImpl();
 
 	private IDaoUsuario iDaoUsuario = new IDaoUsuarioImpl();
 
@@ -55,6 +57,18 @@ public class UsuarioBean implements Serializable {
 		dao.deletarPorId(usuario);
 		usuario = new Usuario();
 		return "";
+	}
+	
+	public String logar(){
+		
+		Usuario usuarioUser = iDaoUsuario.consultarUsuario(usuario.getNome(), usuario.getSenha());
+		if (usuarioUser != null) {//usuario existente
+			
+			return"cadastro.xhtml"; 
+		}
+		
+		
+		return "index.xhtml";
 	}
 
 	public String logar() {
