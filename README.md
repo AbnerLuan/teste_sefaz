@@ -1,6 +1,1 @@
-# teste_sefaz
-Teste Sefaz - 2022
-
-Sistema de Crud com tela de login para autenticação.
-
-Desenvolvido em Java.
+<h1 align="center"> Projeto Sefaz - Sistema de Cadastro de Usuários  </h1>
