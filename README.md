@@ -37,8 +37,8 @@ O projeto foi desenvolvido para realizar cadastro de usuários contendo informa�
 <h4 align="center"> 
     :construction:  Projeto em construção, futuras melhorias:  :construction:
 </h4>
-- Implantação do "Open Session in View";
-- Melhoria e personalização do front;
-- Personalização de mensagens para o usuario de acordo com cada ação;
-- Adicionar campo para cadastro de endereços.
 
+- `Implantação do "Open Session in View"`
+- `Melhoria e personalização do front`
+- `Personalização de mensagens para o usuario de acordo com cada ação"`
+- `Adicionar campo para cadastro de endereços`
