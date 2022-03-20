@@ -11,8 +11,6 @@ O projeto foi desenvolvido para realizar cadastro de usuários contendo informa�
 -MySQL;
 -WildFly.
 
-> :construction: Projeto em construção :construction:
-
 ## :hammer: Funcionalidades do projeto (CRUD)
 
 - `Login de acesso`: Tela inicial com login e senha para acessar a tela de cadastro principal.
@@ -35,3 +33,12 @@ O projeto foi desenvolvido para realizar cadastro de usuários contendo informa�
 - Maven;
 - MySQL;
 - WildFly 21.0.0.
+
+<h4 align="center"> 
+    :construction:  Projeto em construção, futuras melhorias:  :construction:
+</h4>
+-Implantação do "Open Session in View";
+-Melhoria e personalização do front;
+-Personalização de mensagens para o usuario de acordo com cada ação;
+-Adicionar campo para cadastro de endereços.
+
