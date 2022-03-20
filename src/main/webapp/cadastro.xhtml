@@ -10,16 +10,16 @@
 
 	<h:form>
 		<h:messages />
-		
 
-		<p:panelGrid columns="4">
-				<f:facet name="header">Painel de Cadastro</f:facet>
+		<p:panelGrid columns="6">
+			<f:facet name="header">Painel de Cadastro de Usuarios</f:facet>
 
-			<p:outputLabel value="ID: " />
-			<p:inputText readonly="true" value="#{usuarioBean.usuario.id}" />
+			<p:outputLabel value="ID: " rendered="false" />
+			<p:inputText readonly="true" value="#{usuarioBean.usuario.id}"
+				rendered="false" />
 
 			<p:outputLabel value="Nome: " />
-			<p:inputText id="nome" value="#{usuarioBean.usuario.nome}"  />
+			<p:inputText id="nome" value="#{usuarioBean.usuario.nome}" />
 
 			<p:outputLabel value="E-mail: " />
 			<p:inputText id="email" value="#{usuarioBean.usuario.email}" />
@@ -27,11 +27,11 @@
 			<p:outputLabel value="Senha: " />
 			<p:password id="senha" value="#{usuarioBean.usuario.senha}" />
 
-			
-			<p:outputLabel value="" />
-			<p:commandButton value="SALVAR" action="#{usuarioBean.salvar}" ajax="false" />
-
 		</p:panelGrid>
+		<br />
+		<p:commandButton value="SALVAR" action="#{usuarioBean.salvar}"
+			ajax="false" />
+		<br />
 		<br />
 
 		<p:dataTable value="#{usuarioBean.list}" var="u" cellpadding="15"
@@ -63,22 +63,32 @@
 				<p:commandButton ajax="false" value="Editar">
 					<f:setPropertyActionListener value="#{u}"
 						target="#{usuarioBean.usuario}"></f:setPropertyActionListener>
-				</p:commandButton>				
-			</p:column >
-			
+				</p:commandButton>
+			</p:column>
+
 			<p:column width="100px">
 				<f:facet name="header">Deletar</f:facet>
-				<p:commandButton ajax="false" value="Deletar" action="#{usuarioBean.remover}">
+				<p:commandButton ajax="false" value="Deletar"
+					action="#{usuarioBean.remover}">
 					<f:setPropertyActionListener value="#{u}"
-						target="#{usuarioBean.usuario}"></f:setPropertyActionListener> 
+						target="#{usuarioBean.usuario}"></f:setPropertyActionListener>
 				</p:commandButton>
+			</p:column>
+
+			<p:column width="100px">
+				<f:facet name="header">Telefones</f:facet>
+				<h:commandLink immediate="true" action="telefone.xhtml"
+					id="botaofone">
+					<h:graphicImage url="resources/img/telefones.png" width="25"
+						height="25" />
+					<f:param name="codigouser" value="#{u.id}" />
+
+				</h:commandLink>
 			</p:column>
 
 		</p:dataTable>
 
-
 	</h:form>
-
 
 </h:body>
 </html>

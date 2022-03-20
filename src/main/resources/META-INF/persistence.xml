@@ -5,14 +5,15 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
 
 
-	<persistence-unit name="crud6"
+	<persistence-unit name="teste_sefaz"
 		transaction-type="RESOURCE_LOCAL">
 		
 			<class>br.com.sefaz.model.Usuario</class>
+			<class>br.com.sefaz.model.TelefoneUser</class>
 		
 		<properties>
 			<property name="javax.persistence.jdbc.driver"
-				value="com.mysql.jdbc.Driver" />
+				value="com.mysql.cj.jdbc.Driver" />
 			<property name="javax.persistence.jdbc.url"
 				value="jdbc:mysql://localhost/teste_sefaz" />
 			<property name="javax.persistence.jdbc.user" value="root" />

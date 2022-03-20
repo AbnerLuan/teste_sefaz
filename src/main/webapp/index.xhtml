@@ -7,23 +7,21 @@
 	<title>Tela de Login</title>
 </h:head>
 <h:body>
-  <h:form>
-    <p:messages id="messages" />
-    <p:panelGrid columns="2">
-    <f:facet name="header">Tela de Login</f:facet>
-      <p:outputLabel for="nome" value="Nome
-      Usuário:" />
-      <p:inputText id="nome"
-      value="#{loginBean.usuario.nome}" />
+	<h:form>
+		<p:messages id="messages" />
+		<p:panelGrid columns="2">
+			<f:facet name="header">Tela de Login</f:facet>
+			<p:outputLabel for="nome" value="Nome Usuário:" />
+			<p:inputText id="nome" value="#{usuarioBean.usuario.nome}" />
 
-      <p:outputLabel for="senha" value="Senha:" />
-      <p:password id="senha" value="#{loginBean.usuario.senha}" />
+			<p:outputLabel for="senha" value="Senha:" />
+			<p:password id="senha" value="#{usuarioBean.usuario.senha}" />
 
- 	<p:outputLabel value="" />
-		<p:commandButton value="Logar" icon="ui-icon-star" action="#{loginBean.envia}" />
-    
-    </p:panelGrid>
-  </h:form>
+			<p:outputLabel value="" />
+			<p:commandButton value="Logar" action="#{usuarioBean.logar}" />
+
+		</p:panelGrid>
+	</h:form>
 
 </h:body>
 </html>

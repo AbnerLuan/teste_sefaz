@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Telefones de Usuario</title>
+</h:head>
+<h:body>
+	<h:form>
+		<p:breadCrumb>
+			<p:menuitem />
+			<p:menuitem value="Página de usuário" action="cadastro.xhtml" />
+		</p:breadCrumb>
+	</h:form>
+
+	<h:form>
+		<p:messages showDetail="true" showSummary="false" id="msg" />
+
+		<p:panelGrid columns="4">
+			<f:facet name="header">Paine de cadastro de Telefones</f:facet>
+
+			<p:outputLabel>Usuario: </p:outputLabel>
+			<p:outputLabel value="#{telefoneBean.user.nome}" />
+
+			<p:outputLabel>DDD: </p:outputLabel>
+			<p:inputText value="#{telefoneBean.telefone.ddd}" />
+
+			<p:outputLabel>Número: </p:outputLabel>
+			<p:inputText value="#{telefoneBean.telefone.numero}" />
+
+			<p:outputLabel>Tipo: </p:outputLabel>
+			<p:inputText value="#{telefoneBean.telefone.tipo}" />
+
+		</p:panelGrid>
+		<br />
+		<p:commandButton value="SALVAR" action="#{telefoneBean.salvar}"
+			ajax="false" />
+		<br />
+		<br />
+
+	</h:form>
+
+	<h:form id="formTelefones">
+		<p:dataTable value="#{telefoneBean.user.telefoneUsers}" var="fone"
+			border="1" cellpadding="15" id="tabelfone">
+			<f:facet name="header">Lista de Telefones</f:facet>
+			<p:column>
+				<f:facet name="header">Id</f:facet>
+				<p:outputLabel value="#{fone.id}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">DDD</f:facet>
+				<p:outputLabel value="#{fone.ddd}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">Telefone</f:facet>
+				<p:outputLabel value="#{fone.numero}" />
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">Tipo</f:facet>
+				<p:outputLabel value="#{fone.tipo}" />
+			</p:column>
+
+			<p:column width="100px">
+				<f:facet name="header">Editar</f:facet>
+				<p:commandButton ajax="false" value="Editar">
+					<f:setPropertyActionListener value="#{fone}"
+						target="#{telefoneBean.telefone}"></f:setPropertyActionListener>
+				</p:commandButton>
+			</p:column>
+
+			<p:column width="100px">
+				<f:facet name="header">Deletar</f:facet>
+				<p:commandButton ajax="false" value="Deletar"
+					action="#{telefoneBean.removeTelefone}">
+					<f:setPropertyActionListener value="#{fone}"
+						target="#{telefoneBean.telefone}"></f:setPropertyActionListener>
+				</p:commandButton>
+			</p:column>
+
+		</p:dataTable>
+
+	</h:form>
+
+</h:body>
+</html>
+
