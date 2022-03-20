@@ -4,12 +4,20 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
+	<h:outputStylesheet library="css" name="file.css" />
 	<title>Cadastro de Usuario</title>
 </h:head>
 <h:body>
 
 	<h:form>
-		<h:messages />
+		<p:breadCrumb>
+			<p:menuitem />
+			<p:menuitem value="Você está na Página de Usuário" />
+		</p:breadCrumb>
+	</h:form>
+
+	<h:form>
+		<p:messages />
 
 		<p:panelGrid columns="6">
 			<f:facet name="header">Painel de Cadastro de Usuarios</f:facet>
@@ -25,65 +33,112 @@
 			<p:inputText id="email" value="#{usuarioBean.usuario.email}" />
 
 			<p:outputLabel value="Senha: " />
-			<p:password id="senha" value="#{usuarioBean.usuario.senha}" />
+			<p:password id="senha" value="#{usuarioBean.usuario.senha}"
+				feedback="true" weakLabel="Muito fraca" goodLabel="Razoavel"
+				strongLabel="Senha forte" inline="true" />
+
+			<p:outputLabel value="CEP:" />
+			<p:inputMask mask="99999-999" size="8"
+				value="#{usuarioBean.usuario.cep}" id="cepuser">
+				<f:ajax event="blur" execute="@this"
+					render="logradouro bairro localidade estado"
+					listener="#{usuarioBean.pesquisaCep}" />
+			</p:inputMask>
+
+			<p:outputLabel value="Logradouro:" />
+			<p:inputText value="#{usuarioBean.usuario.logradouro}"
+				id="logradouro" readonly="true" />
+
+			<p:outputLabel value="Bairro:" />
+			<p:inputText value="#{usuarioBean.usuario.bairro}" id="bairro"
+				readonly="true" />
+
+			<p:outputLabel value="Cidade: " />
+			<p:inputText value="#{usuarioBean.usuario.localidade}"
+				id="localidade" readonly="true" />
+
+			<p:outputLabel value="Estado: " />
+			<p:inputText value="#{usuarioBean.usuario.uf}" id="estado"
+				readonly="true" />
+
+			<p:outputLabel value="" />
+			<p:commandButton value="SALVAR" action="#{usuarioBean.salvar}"
+				ajax="false" />
 
 		</p:panelGrid>
-		<br />
-		<p:commandButton value="SALVAR" action="#{usuarioBean.salvar}"
-			ajax="false" />
-		<br />
+
 		<br />
 
 		<p:dataTable value="#{usuarioBean.list}" var="u" cellpadding="15"
 			border="1" paginator="true" rows="5">
-			<f:facet name="header">Lista de usuarios</f:facet>
+			<f:facet name="header" id="titulotabela">Lista de usuarios</f:facet>
 
-			<p:column>
-				<f:facet name="header">Id</f:facet>
+			<p:column width="70px" headerText="Id">
 				<p:outputLabel value="#{u.id}" />
 			</p:column>
 
-			<p:column>
-				<f:facet name="header">Nome</f:facet>
+			<p:column headerText="Nome">
 				<p:outputLabel value="#{u.nome}" />
 			</p:column>
 
-			<p:column>
-				<f:facet name="header">E-mail</f:facet>
+			<p:column headerText="E-mail">
 				<p:outputLabel value="#{u.email}" />
 			</p:column>
 
-			<p:column>
-				<f:facet name="header">Senha</f:facet>
+			<p:column headerText="Senha">
 				<p:outputLabel value="#{u.senha}" />
 			</p:column>
 
-			<p:column width="100px">
-				<f:facet name="header">Editar</f:facet>
-				<p:commandButton ajax="false" value="Editar">
-					<f:setPropertyActionListener value="#{u}"
-						target="#{usuarioBean.usuario}"></f:setPropertyActionListener>
-				</p:commandButton>
+			<p:column headerText="Cep">
+				<p:outputLabel value="#{u.cep}" />
 			</p:column>
 
-			<p:column width="100px">
-				<f:facet name="header">Deletar</f:facet>
-				<p:commandButton ajax="false" value="Deletar"
-					action="#{usuarioBean.remover}">
-					<f:setPropertyActionListener value="#{u}"
-						target="#{usuarioBean.usuario}"></f:setPropertyActionListener>
-				</p:commandButton>
+			<p:column headerText="Logradouro">
+				<p:outputLabel value="#{u.logradouro}" />
 			</p:column>
 
-			<p:column width="100px">
-				<f:facet name="header">Telefones</f:facet>
-				<h:commandLink immediate="true" action="telefone.xhtml"
-					id="botaofone">
-					<h:graphicImage url="resources/img/telefones.png" width="25"
-						height="25" />
-					<f:param name="codigouser" value="#{u.id}" />
+			<p:column headerText="Bairro">
+				<p:outputLabel value="#{u.bairro}" />
+			</p:column>
 
-				</h:commandLink>
+			<p:column headerText="Cidade">
+				<p:outputLabel value="#{u.localidade}" />
+			</p:column>
+
+			<p:column headerText="Estado">
+				<p:outputLabel value="#{u.uf}" />
+			</p:column>
+
+			<p:column width="70px" headerText="Editar">
+				<div
+					style="display: flex; justify-content: center; align-items: center;">
+					<p:commandButton ajax="false" styleClass="ui-confirmdialog-no"
+						icon="pi pi-user-edit">
+						<f:setPropertyActionListener value="#{u}"
+							target="#{usuarioBean.usuario}"></f:setPropertyActionListener>
+					</p:commandButton>
+				</div>
+			</p:column>
+
+			<p:column width="70px" headerText="Deletar">
+				<div
+					style="display: flex; justify-content: center; align-items: center;">
+					<p:commandButton ajax="false" styleClass="ui-confirmdialog-no"
+						icon="pi pi-trash" action="#{usuarioBean.remover}">
+						<f:setPropertyActionListener value="#{u}"
+							target="#{usuarioBean.usuario}"></f:setPropertyActionListener>
+					</p:commandButton>
+				</div>
+			</p:column>
+
+			<p:column width="70px" headerText="Telefones">
+				<div
+					style="display: flex; justify-content: center; align-items: center;">
+					<p:commandButton ajax="false" styleClass="ui-confirmdialog-no"
+						icon="pi pi-phone" action="telefone.xhtml" id="botaofone">
+						<f:param name="codigouser" value="#{u.id}" />
+					</p:commandButton>
+				</div>
 			</p:column>
 
 		</p:dataTable>

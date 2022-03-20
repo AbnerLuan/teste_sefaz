@@ -10,7 +10,8 @@
 	<h:form>
 		<p:breadCrumb>
 			<p:menuitem />
-			<p:menuitem value="Página de usuário" action="cadastro.xhtml" />
+			<p:menuitem value="Voltar à Página de usuário"
+				action="cadastro.xhtml" />
 		</p:breadCrumb>
 	</h:form>
 
@@ -24,13 +25,19 @@
 			<p:outputLabel value="#{telefoneBean.user.nome}" />
 
 			<p:outputLabel>DDD: </p:outputLabel>
-			<p:inputText value="#{telefoneBean.telefone.ddd}" />
+			<p:inputMask mask="99" size="2" value="#{telefoneBean.telefone.ddd}" />
 
 			<p:outputLabel>Número: </p:outputLabel>
-			<p:inputText value="#{telefoneBean.telefone.numero}" />
+			<p:inputMask mask="9.9999-9999" size="9"
+				value="#{telefoneBean.telefone.numero}" />
 
 			<p:outputLabel>Tipo: </p:outputLabel>
-			<p:inputText value="#{telefoneBean.telefone.tipo}" />
+			<p:selectOneMenu id="option" value="#{telefoneBean.telefone.tipo}">
+				<f:selectItem itemLabel="Escolha uma opção" itemValue="" />
+				<f:selectItem itemLabel="Celular" itemValue="Celular" />
+				<f:selectItem itemLabel="Residencial" itemValue="Residencial" />
+				<f:selectItem itemLabel="Profissional" itemValue="Profissional" />
+			</p:selectOneMenu>
 
 		</p:panelGrid>
 		<br />
@@ -44,14 +51,12 @@
 	<h:form id="formTelefones">
 		<p:dataTable value="#{telefoneBean.user.telefoneUsers}" var="fone"
 			border="1" cellpadding="15" id="tabelfone">
-			<f:facet name="header">Lista de Telefones</f:facet>
-			<p:column>
-				<f:facet name="header">Id</f:facet>
+
+			<p:column width="70px" headerText="Id">
 				<p:outputLabel value="#{fone.id}" />
 			</p:column>
 
-			<p:column>
-				<f:facet name="header">DDD</f:facet>
+			<p:column headerText="DDD">
 				<p:outputLabel value="#{fone.ddd}" />
 			</p:column>
 
@@ -60,26 +65,31 @@
 				<p:outputLabel value="#{fone.numero}" />
 			</p:column>
 
-			<p:column>
-				<f:facet name="header">Tipo</f:facet>
+			<p:column headerText="Tipo">
 				<p:outputLabel value="#{fone.tipo}" />
 			</p:column>
 
-			<p:column width="100px">
-				<f:facet name="header">Editar</f:facet>
-				<p:commandButton ajax="false" value="Editar">
-					<f:setPropertyActionListener value="#{fone}"
-						target="#{telefoneBean.telefone}"></f:setPropertyActionListener>
-				</p:commandButton>
+			<p:column width="70px" headerText="Editar">
+				<div
+					style="display: flex; justify-content: center; align-items: center;">
+					<p:commandButton ajax="false" styleClass="ui-confirmdialog-no"
+						icon="pi pi-user-edit">
+						<f:setPropertyActionListener value="#{fone}"
+							target="#{telefoneBean.telefone}"></f:setPropertyActionListener>
+					</p:commandButton>
+				</div>
 			</p:column>
 
-			<p:column width="100px">
-				<f:facet name="header">Deletar</f:facet>
-				<p:commandButton ajax="false" value="Deletar"
-					action="#{telefoneBean.removeTelefone}">
-					<f:setPropertyActionListener value="#{fone}"
-						target="#{telefoneBean.telefone}"></f:setPropertyActionListener>
-				</p:commandButton>
+			<p:column width="70px" headerText="Deletar">
+				<div
+					style="display: flex; justify-content: center; align-items: center;">
+
+					<p:commandButton ajax="false" styleClass="ui-confirmdialog-no"
+						icon="pi pi-trash" action="#{telefoneBean.removeTelefone}">
+						<f:setPropertyActionListener value="#{fone}"
+							target="#{telefoneBean.telefone}"></f:setPropertyActionListener>
+					</p:commandButton>
+				</div>
 			</p:column>
 
 		</p:dataTable>
