@@ -104,11 +104,9 @@ public class UsuarioBean implements Serializable {
 		}
 
 		usuario = new Usuario();
-	      FacesContext.getCurrentInstance().addMessage(
-	         null,
-	         new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuário não encontrado!",
-	           "Erro no Login!"));
-	      return null;
+		FacesContext.getCurrentInstance().addMessage(null,
+				new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuário não encontrado!", "Erro no Login!"));
+		return null;
 	}
 
 }

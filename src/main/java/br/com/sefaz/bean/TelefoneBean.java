@@ -18,7 +18,7 @@ import br.com.sefaz.model.Usuario;
 public class TelefoneBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private Usuario user = new Usuario();
 	private DaoUsuario<Usuario> daoUser = new DaoUsuario<Usuario>();
 	private DaoTelefones<TelefoneUser> daoTelefone = new DaoTelefones<TelefoneUser>();

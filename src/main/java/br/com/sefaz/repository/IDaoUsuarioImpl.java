@@ -1,13 +1,15 @@
 package br.com.sefaz.repository;
 
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
 import br.com.sefaz.model.Usuario;
 import br.com.sefaz.service.UsuarioService;
 
+@Named
 public class IDaoUsuarioImpl implements IDaoUsuario {
-
+	
 	@Override
 	public Usuario consultarUsuario(String nome, String senha) {
 
@@ -25,6 +27,6 @@ public class IDaoUsuarioImpl implements IDaoUsuario {
 		entityManager.close();
 
 		return usuario;
-	}
+	}	
 
 }

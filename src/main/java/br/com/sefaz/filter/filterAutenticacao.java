@@ -15,17 +15,16 @@
 //
 //import br.com.sefaz.service.UsuarioService;
 //
-//@WebFilter(urlPatterns = { "/*" })
-//public class filterAutenticacao implements Filter {
+//@WebFilter(urlPatterns={"/*"})
+//public class FilterAutenticacao implements Filter {
 //
 //	@Override
 //	public void destroy() {
-//
 //	}
 //
 //	@Override
-//	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
-//			throws IOException, ServletException {
+//	public void doFilter(ServletRequest request, ServletResponse response,
+//			FilterChain chain) throws IOException, ServletException {
 //		
 //		HttpServletRequest req = (HttpServletRequest) request;
 //		HttpSession session = req.getSession();
@@ -34,24 +33,21 @@
 //		
 //		String url = req.getServletPath();
 //		
-//		if (url.equalsIgnoreCase("index.xhtml") && usuarioLogado == null ||
-//				(usuarioLogado != null && usuarioLogado.trim().isEmpty())) {
+//		if (!url.equalsIgnoreCase("index.xhtml") && usuarioLogado == null ||
+//			(usuarioLogado != null && usuarioLogado.trim().isEmpty())){
 //			RequestDispatcher dispatcher = request.getRequestDispatcher("/index.xhtml");
-//			dispatcher.forward(request,  response);
+//			dispatcher.forward(request, response);
 //			return;
-//		} else {
+//		}else {
+//			// executa as ações do request e do response
 //			chain.doFilter(request, response);
 //		}
 //		
-//		//executa acoes request e response
-//		chain.doFilter(request, response);
-//
 //	}
 //
 //	@Override
 //	public void init(FilterConfig arg0) throws ServletException {
 //		UsuarioService.getEntityManager();
-//		
 //	}
 //
 //}
