@@ -9,8 +9,8 @@
 	<title>Tela de Login</title>
 </h:head>
 <h:body>
-	<h:form id="formLogin">
-		<p:messages id="messages" />
+	<h:form id="formLogin" >
+		<p:messages id="messages" showDetail="true" showSummary="true" />
 		<p:panelGrid columns="2">
 			<f:facet name="header">Tela de Login</f:facet>
 			<p:outputLabel for="nome" value="Nome Usuário:" />
@@ -20,7 +20,7 @@
 			<p:password id="senha" value="#{usuarioBean.usuario.senha}" />
 
 			<p:outputLabel value="" />
-			<p:commandButton value="Logar" action="#{usuarioBean.logar}" />
+			<p:commandButton value="Logar" action="#{usuarioBean.logar}" ajax="false"/>
 
 		</p:panelGrid>
 	</h:form>

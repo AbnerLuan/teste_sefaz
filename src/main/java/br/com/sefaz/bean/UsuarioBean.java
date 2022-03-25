@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.view.ViewScoped;
@@ -99,6 +100,10 @@ public class UsuarioBean implements Serializable {
 
 		Usuario usuarioUser = iDaoUsuario.consultarUsuario(usuario.getNome(), usuario.getSenha());
 		if (usuarioUser != null) {// usuario existente
+			
+			FacesContext context = FacesContext.getCurrentInstance();
+			ExternalContext externalContext = context.getExternalContext();
+			externalContext.getSessionMap().put("usuarioLogado", usuarioUser.getNome());
 
 			return "cadastro.xhtml";
 		}
@@ -106,7 +111,7 @@ public class UsuarioBean implements Serializable {
 		usuario = new Usuario();
 		FacesContext.getCurrentInstance().addMessage(null,
 				new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuário não encontrado!", "Erro no Login!"));
-		return null;
+		return "index.xhtml";
 	}
 
 }
